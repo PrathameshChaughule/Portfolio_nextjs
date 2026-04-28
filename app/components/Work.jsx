@@ -1,36 +1,109 @@
-import { assets, workData } from '@/assets/assets'
-import Image from 'next/image'
-import React from 'react'
+import { useRef } from "react"
+import Image from "next/image"
+import { workData } from "@/assets/assets"
+import { FaAngleLeft } from "react-icons/fa6";
+import { FaAngleRight } from "react-icons/fa6";
+import { FaArrowRightLong } from "react-icons/fa6";
 
-const Work = () => {
+const Work = ({ dark }) => {
+
+    const scrollRef = useRef(null)
+
+    const scroll = (direction) => {
+        const { current } = scrollRef
+        if (!current) return
+
+        const scrollAmount = 350
+        current.scrollBy({
+            left: direction === "left" ? -scrollAmount : scrollAmount,
+            behavior: "smooth",
+        })
+    }
+
     return (
-        <div id='work' className='w-full px-[12%] py-10 scroll-mt-20'>
-            <h4 className='text-center mb-2 text-lg font-Ovo'>My portfolio</h4>
-            <h2 className='text-center text-5xl font-Ovo'>My latest work</h2>
+        <section
+            id="work"
+            className={`w-full py-20 px-[5%] transition ${dark ? "bg-[#11001F] text-white" : "bg-white text-black"
+                }`}>
 
-            <p className='text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo'>
-                Welcome to my web development portfolio! Explore a collection of projects showcasing my expertise in front-end development.
-            </p>
-
-            <div className='grid grid-cols-auto my-10 gap-5'>
-                {workData.map((project, index) => (
-                    <div key={index} className='aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group' style={{ backgroundImage: `url(${project.bgImage})` }}>
-                        <div className='bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7'>
-                            <div>
-                                <h2 className='font-semibold'>{project.title}</h2>
-                                <p className='text-sm text-gray-700'>{project.description}</p>
-                            </div>
-                            <div className='border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition'>
-                                <Image src={assets.send_icon} alt='send icon' className='w-5' />
-                            </div>
-                        </div>
-                    </div>
-                ))}
+            {/* Heading */}
+            <div className="text-center mb-12">
+                <h2 className="text-4xl md:text-5xl font-semibold">
+                    My Work
+                </h2>
+                <p className="text-gray-500 dark:text-gray-400 mt-3">
+                    Selected projects showcasing my skills
+                </p>
             </div>
-            <a href="" className='w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500'>
-                Show more <Image src={assets.right_arrow_bold} alt='Right arrow' className='w-4' />
-            </a>
-        </div>
+
+            {/* Wrapper */}
+            <div className="relative">
+
+                {/* Blur Effects */}
+                <div className="pointer-events-none absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-white dark:from-[#11001F] to-transparent z-10" />
+                <div className="pointer-events-none absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-white dark:from-[#11001F] to-transparent z-10" />
+
+                {/* Left Button */}
+                <button onClick={() => scroll("left")} className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-black/60 text-white w-9 h-9 md:w-12 md:h-12 rounded-full flex items-center justify-center">
+                    <FaAngleLeft className="text-2xl" />
+                </button>
+
+                {/* Scroll */}
+                <div
+                    ref={scrollRef}
+                    className="flex gap-9 mx-3 overflow-x-auto scroll-smooth snap-x snap-mandatory px-6 md:px-12 scrollbar-hide"
+                >
+                    {workData.map((project, index) => (
+                        <div
+                            key={index}
+                            className={`min-w-[280px] sm:min-w-[320px] md:min-w-[380px] lg:min-w-[450px]
+                            max-w-[280px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[450px]
+                            snap-center rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-500 
+                                ${dark
+                                    ? "bg-[#1a0b2e96] hover:bg-[#22123A] border border-white/10 shadow-lg shadow-black/30"
+                                    : "bg-[#F8F9FB] hover:bg-white border border-black/5 shadow-sm hover:shadow-md"
+                                }`}
+                        >
+
+                            <div className="relative h-44 sm:h-52 md:h-60 lg:h-72">
+                                <Image src={project.bgImage} alt={project.title} fill className="object-cover" />
+                            </div>
+
+                            <div className="p-5">
+
+                                <h3 className="text-2xl font-semibold mb-2">
+                                    {project.title}
+                                </h3>
+
+                                <p className="text-lg text-gray-500 dark:text-gray-400 mb-4">
+                                    {project.description}
+                                </p>
+
+                                <a
+                                    href={project.link}
+                                    target="_blank"
+                                    className={`text-center py-2 rounded-full border transition flex justify-center gap-3 items-center ${dark
+                                        ? "border-gray-600 hover:bg-white/90 hover:text-black"
+                                        : "border-gray-300 hover:bg-black hover:text-white"
+                                        }`}
+                                >
+                                    View Website <FaArrowRightLong />
+                                </a>
+
+                            </div>
+
+                        </div>
+                    ))}
+                </div>
+
+                {/* Right Button */}
+                <button onClick={() => scroll("right")} className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-black/60 text-white w-9 h-9 md:w-12 md:h-12 rounded-full flex items-center justify-center">
+                    <FaAngleRight className="text-2xl" />
+                </button>
+
+            </div>
+
+        </section>
     )
 }
 

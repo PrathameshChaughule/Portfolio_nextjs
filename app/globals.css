@@ -1,6 +1,25 @@
 @import "tailwindcss";
 @config "../tailwind.config.mjs";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 body {
   @apply font-Outfit;
+}
+
+:root[data-theme="dark"] {
+  --legend-color: #cbd5e1;
+}
+
+:root[data-theme="light"] {
+  --legend-color: #334155;
+}
+
+/* hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

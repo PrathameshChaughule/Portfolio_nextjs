@@ -16,6 +16,7 @@ import logo_dark from './logo_dark.png';
 import mail_icon from './mail_icon.png';
 import mail_icon_dark from './mail_icon_dark.png';
 import profile_img from './profile-img.png';
+import light_profile_image from './light-profile-image.png';
 import download_icon from './download-icon.png';
 import hand_icon from './hand-icon.png';
 import header_bg_color from './header-bg-color.png';
@@ -35,6 +36,12 @@ import right_arrow from './right-arrow.png';
 import send_icon from './send-icon.png';
 import right_arrow_bold from './right-arrow-bold.png';
 import right_arrow_bold_dark from './right-arrow-bold-dark.png';
+import gamering from './projects/gamering.jpeg'
+import resuify from './projects/resuify.jpeg'
+import shadowpanel from './projects/shadowpanel.jpeg'
+import ratemystore from './projects/ratemystore.jpeg'
+import tomato from "./projects/tomato.jpeg"
+import neulife from "./projects/neulife.jpeg"
 
 export const assets = {
     user_image,
@@ -55,6 +62,7 @@ export const assets = {
     mail_icon,
     mail_icon_dark,
     profile_img,
+    light_profile_image,
     download_icon,
     hand_icon,
     header_bg_color,
@@ -78,38 +86,90 @@ export const assets = {
 
 export const workData = [
     {
-        title: 'Frontend project',
-        description: 'Web Design',
-        bgImage: '/work-1.png',
+        title: 'Resuify – AI Resume Builder',
+        description: 'React.js, Node.js, Express.js, MongoDb, Redux, Tailwind CSS',
+        bgImage: resuify,
+        link: "https://resuify.vercel.app/"
     },
     {
-        title: 'Geo based app',
-        description: 'Mobile App',
-        bgImage: '/work-2.png',
+        title: 'Gamering – Admin-Driven Game Store',
+        description: 'React.js, Redux, Tailwind CSS, Supabase',
+        bgImage: gamering,
+        link: "https://gamering-nu.vercel.app/"
     },
     {
-        title: 'Photography site',
-        description: 'Web Design',
-        bgImage: '/work-3.png',
+        title: 'ShadowPanel',
+        description: 'React.js, Redux, Tailwind CSS',
+        bgImage: shadowpanel,
+        link: "https://shadow-panel-ochre.vercel.app/"
     },
     {
-        title: 'UI/UX designing',
-        description: 'UI/UX Design',
-        bgImage: '/work-4.png',
+        title: 'RateMyStore',
+        description: 'React.js, Node.js, Express.js, PostgreSQL, Redux, Tailwind CSS',
+        bgImage: ratemystore,
+        link: "https://rate-my-store-weld.vercel.app/"
+    },
+    {
+        title: 'Tomato',
+        description: 'React.js, Node.js, Express.js, MongoDb, Redux, Tailwind CSS',
+        bgImage: tomato,
+        link: "https://github.com/PrathameshChaughule/Food-Delivery-Website"
+    },
+    {
+        title: 'nuelife',
+        description: 'React.js, Tailwind CSS,',
+        bgImage: neulife,
+        link: "https://github.com/PrathameshChaughule/Interview-Task"
     },
 ]
 
 export const serviceData = [
-    { icon: assets.web_icon, title: 'Web design', description: 'Web development is the process of building, programming...', link: '' },
-    { icon: assets.mobile_icon, title: 'Mobile app', description: 'Mobile app development involves creating software for mobile devices...', link: '' },
-    { icon: assets.ui_icon, title: 'UI/UX design', description: 'UI/UX design focuses on creating a seamless user experience...', link: '' },
-    { icon: assets.graphics_icon, title: 'Graphics design', description: 'Creative design solutions to enhance visual communication...', link: '' },
+    {
+        icon: assets.web_icon,
+        title: 'Full Stack Web Development',
+        description: 'Building scalable full-stack applications using MongoDB, Express.js, React.js, and Node.js with clean architecture and RESTful APIs.',
+        link: ''
+    },
+    {
+        icon: assets.ui_icon,
+        title: 'Frontend Development',
+        description: 'Creating responsive and dynamic user interfaces using React.js, Tailwind CSS, Redux Toolkit, and modern UI/UX practices.',
+        link: ''
+    },
+    {
+        icon: assets.mobile_icon,
+        title: 'Backend & API Development',
+        description: 'Designing secure and efficient backend systems with Node.js and Express.js, including JWT authentication, RBAC, and API integrations.',
+        link: ''
+    },
+    {
+        icon: assets.web_icon,
+        title: 'Custom Web Applications',
+        description: 'Developing real-world applications like AI Resume Builder and eCommerce platforms with advanced features like ATS scoring and role-based access.',
+        link: ''
+    }
 ]
 
+export const educationData = [
+    {
+        title: 'Bachelor of Engineering (B.E.)',
+        institute: 'Finolex Academy of Management and Technology, Ratnagiri',
+        duration: '2021 – 2025',
+        description: 'CGPA: 7.6/10. Focused on software development, data structures, and web technologies.'
+    },
+    {
+        title: 'Higher Secondary Certificate (CBSE)',
+        institute: 'Jawahar Navodaya Vidyalaya, Ratnagiri',
+        duration: '2020 – 2021',
+        description: 'Percentage: 81%. Strong foundation in science and mathematics.'
+    }
+]
+
+
 export const infoList = [
-    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML, CSS, JavaScript React Js, Next Js' },
-    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'B.Tech in Computer Science' },
-    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 5 projects' }
+    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML, CSS, JavaScript, React Js, Next Js, Node Js, Express Js' },
+    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'B.E. in Electronics and Telecommunication Engineering' },
+    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 7 projects' }
 ];
 
 export const toolsData = [
